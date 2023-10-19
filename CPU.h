@@ -6,24 +6,29 @@
 using namespace std;
 
 
-class instruction {
+class Instruction {
 public:
-	bitset<32> instr;//instruction
-	instruction(bitset<32> fetch); // constructor
+	bitset<32> bits;//instruction
+	Instruction(bitset<32> fetch); // constructor
 
 };
 
 class CPU {
-private:
-	int dmemory[4096]; //data memory byte addressable in little endian fashion;
-	unsigned long PC; //pc 
-
 public:
-	CPU();
+	CPU(bitset<8> *instMem);
 	unsigned long readPC();
-	bitset<32> Fetch(bitset<8> *instmem);
-	bool Decode(instruction* instr);
-	
+	void Cycle();
+
+private:
+	void decode_current_instruction();
+	void fetch_current_instruction();
+	bitset<32> get_current_instruction_bits();
+
+private:
+	Instruction curInstruction;
+	bitset<8> *instructionMemory;
+	int dataMemory[4096]; //data memory byte addressable in little endian fashion;
+	unsigned long PC; //pc 
 };
 
 // add other functions and objects here
