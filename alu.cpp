@@ -52,6 +52,8 @@ int ALU::calculate_result()
         return operand1 & operand2;
     case AluSra:
         return operand1 >> operand2;
+    default:
+        return operand1 + operand2;
     }
 }
 
