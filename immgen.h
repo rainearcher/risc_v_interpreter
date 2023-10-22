@@ -10,6 +10,7 @@ public:
 	bitset<32> get_immediate();
 private:
 	bitset<32> immediate;
+	int immInt;
 };
 
 inline bitset<32> ImmGen::get_immediate()

@@ -56,7 +56,7 @@ bitset<32> InstructionReader::i_type_imm(const Instruction &instr)
 	bitset<32> imm;
 	for (size_t i = 0; i < 12; i++)
 	{
-		imm[i] = instr.bits[i + 25];
+		imm[i] = instr.bits[i + 20];
 	}
 
 	bool sign = imm[11];

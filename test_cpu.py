@@ -16,7 +16,7 @@ class TestCpu(unittest.TestCase):
         with open(f'tests/23instMem-{fname}.ans', 'r') as f:
             ans = f.readline()
         output = subprocess.check_output(['./cpusim', f'tests/23instMem-{fname}.txt'])
-        self.assertEqual(ans.strip(), output.strip(), msg=f'Failed {fname}')
+        self.assertEqual(ans.strip(), output.strip().decode('UTF-8'), msg=f'Failed {fname}')
 
     def test_compile(self):
         self.assertTrue(self.build, msg=f"failed to compile")

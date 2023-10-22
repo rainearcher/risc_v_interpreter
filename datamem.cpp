@@ -11,6 +11,8 @@ DataMemory::DataMemory()
 
 void DataMemory::set_address(bitset<32> addr)
 {
+    if (addr.to_ulong() >= static_cast<unsigned long>(4096))
+        return;
     address = addr.to_ulong();
 }
 

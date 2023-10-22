@@ -45,6 +45,7 @@ void CPU::decode_current_instruction()
 	regFile.set_read_register_1(reader.read_reg_1(curInstruction));
 	regFile.set_read_register_2(reader.read_reg_2(curInstruction));
 	regFile.set_write_register(reader.write_reg(curInstruction));
+	regFile.set_reg_write_flag(controller.get_reg_write_flag());
 	immGen.set_input(curInstruction.bits);
 
 	aluSrcMux.set_input_0(regFile.get_data_2());
@@ -54,6 +55,7 @@ void CPU::decode_current_instruction()
 	aluController.set_op(controller.get_alu_op());
 	alu.set_input_1(regFile.get_data_1());
 	alu.set_input_2(aluSrcMux.get_output());
+	alu.set_operation(aluController.get_alu_control());
 
 	branchEqualOrLtMux.set_input_choice(curInstruction.bits[14]);
 	branchEqualOrLtMux.set_input_0(alu.get_zero_flag());
