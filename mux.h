@@ -1,3 +1,5 @@
+#ifndef MUX
+#define MUX
 #include <bitset>
 using namespace std;
 class Mux {
@@ -11,3 +13,4 @@ private:
 	bitset<32> input[2];
 	int index;
 };
+#endif

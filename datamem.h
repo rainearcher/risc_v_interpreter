@@ -1,3 +1,5 @@
+#ifndef DATAMEMORY
+#define DATAMEMORY
 #include <bitset>
 using namespace std;
 
@@ -17,3 +19,4 @@ private:
 	bool shouldRead;
 	bool shouldWrite;
 };
+#endif

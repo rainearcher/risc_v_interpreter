@@ -1,11 +1,14 @@
+#ifndef ALU_CLASS
+#define ALU_CLASS
 #include <bitset>
+#include <string>
 using namespace std;
 
-string ALU_ADD_STR = "0010";
-string ALU_SUB_STR = "0110";
-string ALU_AND_STR = "0000";
-string ALU_XOR_STR = "1110";
-string ALU_SRA_STR = "1000";
+const string ALU_ADD_STR = "0010";
+const string ALU_SUB_STR = "0110";
+const string ALU_AND_STR = "0000";
+const string ALU_XOR_STR = "1110";
+const string ALU_SRA_STR = "1000";
 
 enum AluOperation
 {
@@ -49,3 +52,4 @@ private:
 	bitset<3> func3;
 	bitset<2> aluOp;
 };
+#endif

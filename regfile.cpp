@@ -42,3 +42,14 @@ bitset<32> RegisterFile::get_data_2()
 {
     return registers[readReg2];
 }
+
+int RegisterFile::read_a0()
+{
+
+    return registers[10].to_ulong();
+}
+
+int RegisterFile::read_a1()
+{
+    return registers[11].to_ulong();
+}

@@ -1,3 +1,5 @@
+#ifndef INSTRUCTION
+#define INSTRUCTION
 #include <bitset>
 using namespace std;
 
@@ -5,6 +7,7 @@ class Instruction {
 public:
 	bitset<32> bits;//instruction
 	Instruction(bitset<32> fetch); // constructor
+	string bitString;
 };
 
 class InstructionReader
@@ -19,3 +22,4 @@ public:
 	static bitset<32> b_type_imm(const Instruction &instr);
 	static bitset<3> func3(const Instruction &instr);
 };
+#endif

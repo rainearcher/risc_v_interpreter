@@ -21,6 +21,8 @@ void Controller::set_opcode(bitset<7> code)
 {
 	reset_flags();
 	opcode = code;
+	string opcodeStr = opcode.to_string();
+	string r_type_str = R_TYPE.to_string();
 	if (opcode == R_TYPE)
 	{
 		regWrite = true;

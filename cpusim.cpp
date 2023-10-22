@@ -55,12 +55,11 @@ int main(int argc, char* argv[])
 		return 0; 
 	}
 
-	int maxPC = read_instruction_file(infile, instructionMemory);
+	unsigned long maxPC = read_instruction_file(infile, instructionMemory);
 
 	/* Instantiate your CPU object here.  CPU class is the main class in this project that defines different components of the processor.
 	CPU class also has different functions for each stage (e.g., fetching an instruction, decoding, etc.).
 	*/
-
 	CPU myCPU(instructionMemory);  // call the approriate constructor here to initialize the processor...  
 	// make sure to create a variable for PC and resets it to zero (e.g., unsigned int PC = 0); 
 
@@ -68,8 +67,8 @@ int main(int argc, char* argv[])
 	{
 		myCPU.Cycle();
 	}
-	int a0 =0;
-	int a1 =0;  
+	int a0 = myCPU.read_a0();
+	int a1 = myCPU.read_a1();  
 	// print the results (you should replace a0 and a1 with your own variables that point to a0 and a1)
 	  cout << "(" << a0 << "," << a1 << ")" << endl;
 

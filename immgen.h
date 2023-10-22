@@ -11,4 +11,9 @@ public:
 private:
 	bitset<32> immediate;
 };
+
+inline bitset<32> ImmGen::get_immediate()
+{
+	return immediate;
+}
 #endif

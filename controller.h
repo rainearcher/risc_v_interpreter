@@ -1,3 +1,5 @@
+#ifndef CONTROLLER
+#define CONTROLLER
 #include <bitset>
 using namespace std;
 
@@ -60,3 +62,4 @@ inline bool Controller::get_reg_write_flag()
 {
     return regWrite;
 }
+#endif

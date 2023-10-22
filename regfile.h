@@ -1,3 +1,5 @@
+#ifndef REGFILE
+#define REGFILE
 #include <bitset>
 using namespace std;
 
@@ -14,7 +16,10 @@ public:
 	void write_data(bitset<32> data);
 
 	bitset<32> get_data_1();
-	bitset<32> get_data_2();	
+	bitset<32> get_data_2();
+
+	int read_a0();
+	int read_a1();
 private:
 	bitset<32> registers[32];
 	int readReg1;
@@ -22,3 +27,4 @@ private:
 	int writeReg;
 	bool shouldWrite;
 };
+#endif

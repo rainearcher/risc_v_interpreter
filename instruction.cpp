@@ -1,9 +1,13 @@
 #include "instruction.h"
+#include <iostream>
+
+using namespace std;
 
 Instruction::Instruction(bitset<32> fetch)
 {
 	//cout << fetch << endl;
 	bits = fetch;
+	bitString = bits.to_string();
 	//cout << bits << endl;
 }
 
