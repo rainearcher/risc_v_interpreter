@@ -5,11 +5,26 @@
 #include <string>
 using namespace std;
 
+const bitset<7> R_TYPE("0010011");
+const bitset<7> I_TYPE("0000011");
+const bitset<7> S_TYPE("0100011");
+const bitset<7> B_TYPE("1100011");
+
+class Controller;
+class RegisterFile;
+class ImmGen;
 
 class Instruction {
 public:
 	bitset<32> bits;//instruction
 	Instruction(bitset<32> fetch); // constructor
+	bitset<5> read_reg_1();
+	bitset<5> read_reg_2();
+	bitset<5> write_reg();
+	bitset<7> opcode();
+	bitset<12> i_type_imm();
+	bitset<12> s_type_imm();
+	bitset<13> b_type_imm();
 
 };
 
@@ -28,6 +43,9 @@ private:
 	Instruction curInstruction;
 	bitset<8> *instructionMemory;
 	unsigned long PC; //pc 
+	RegisterFile regFile;
+	Controller controller;
+	ImmGen immGen;
 };
 
 class RegisterFile {
@@ -43,6 +61,11 @@ public:
 
 	bitset<32> get_data_1();
 	bitset<32> get_data_2();	
+private:
+	bitset<32> registers[32];
+	int read_reg_1;
+	int read_reg_2;
+	int write_reg;
 };
 
 class ALU {
@@ -69,6 +92,8 @@ class ImmGen {
 public:
 	void set_input(bitset<32> inp);
 	bitset<32> get_immediate();
+private:
+	bitset<32> immediate;
 };
 
 class DataMemory {
@@ -86,7 +111,7 @@ private:
 
 class Controller {
 public:
-	void set_opcode(bitset<6> opcode);
+	void set_opcode(bitset<7> opcode);
 
 	bool get_branch_flag();
 	bool get_mem_read_flag();
@@ -94,6 +119,8 @@ public:
 	bool get_mem_write_flag();
 	bool get_alu_src_flag();
 	bool get_reg_write_flag();
+private:
+	bitset<7> opcode;
 };
 
 class ALUController {
