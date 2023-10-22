@@ -1,5 +1,5 @@
 #include "CPU.h"
-
+#include "utils.h"
 
 CPU::CPU(bitset<8> *instMem) :
 	instructionMemory(instMem), 
@@ -16,10 +16,7 @@ void CPU::fetch_current_instruction()
 
 bitset<32> CPU::get_current_instruction_bits() 
 {
-	return ((instructionMemory[PC + 3].to_ulong() << 24) + 
-			(instructionMemory[PC + 2].to_ulong() << 16) + 
-			(instructionMemory[PC + 1].to_ulong() << 8) + 
-			(instructionMemory[PC + 0].to_ulong()));
+	return fetch_4_bytes(instructionMemory, PC);
 }
 
 void CPU::Cycle()

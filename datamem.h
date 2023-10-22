@@ -11,5 +11,8 @@ public:
 	
 	bitset<32> get_data();
 private:
-	int dataMemory[4096]; //data memory byte addressable in little endian fashion;
+	bitset<8> dataMemory[4096]; //data memory byte addressable in little endian fashion;
+	unsigned long address;
+	bool shouldRead;
+	bool shouldWrite;
 };
