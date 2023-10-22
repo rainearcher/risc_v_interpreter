@@ -7,4 +7,7 @@ public:
 
 	void set_input_choice(bool choice);
 	bitset<32> get_output();
+private:
+	bitset<32> input[2];
+	int index;
 };
