@@ -16,7 +16,8 @@ public:
 	bitset<32> get_data_2();	
 private:
 	bitset<32> registers[32];
-	int read_reg_1;
-	int read_reg_2;
-	int write_reg;
+	int readReg1;
+	int readReg2;
+	int writeReg;
+	bool shouldWrite;
 };
