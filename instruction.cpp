@@ -106,3 +106,13 @@ bitset<32> InstructionReader::b_type_imm(const Instruction &instr)
 
 	return imm;
 }
+
+bitset<3> InstructionReader::func3(const Instruction &instr)
+{
+	bitset<3> func;
+	for (size_t i = 0; i < 3; i++)
+	{
+		func[i] = instr.bits[i + 12];
+	}
+	return func;
+}

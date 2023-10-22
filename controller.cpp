@@ -26,11 +26,11 @@ void Controller::set_opcode(bitset<7> code)
 		regWrite = true;
 		aluOp = bitset<2>("10");
 	}
-	else if (opcode == I_TYPE)
+	else if (opcode == I_TYPE || opcode == JALR_TYPE)
 	{
 		regWrite = true;
 		aluSrc = true;
-		aluOp = bitset<2>("10");
+		aluOp = bitset<2>("11");
 	}
 	else if (opcode == LOAD_TYPE)
 	{
