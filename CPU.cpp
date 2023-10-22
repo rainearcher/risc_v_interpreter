@@ -12,10 +12,6 @@ CPU::CPU(bitset<8> *instMem) :
 	curInstruction(bitset<32>()), 
 	PC(0)
 {
-	for (int i = 0; i < 4096; i++) //copy instrMEM
-	{
-		dataMemory[i] = (0);
-	}
 }
 
 void CPU::fetch_current_instruction() 
