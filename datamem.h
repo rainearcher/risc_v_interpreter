@@ -3,6 +3,7 @@ using namespace std;
 
 class DataMemory {
 public:
+	DataMemory();
 	void set_address(bitset<32> address);
 	void write_data(bitset<32> data);
 

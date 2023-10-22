@@ -1,6 +1,14 @@
 #include "datamem.h"
 #include "utils.h"
 
+DataMemory::DataMemory()
+{
+    for (long i = 0; i < 4096; i++)
+    {
+        dataMemory[i] = 0;
+    }
+}
+
 void DataMemory::set_address(bitset<32> addr)
 {
     address = addr.to_ulong();
