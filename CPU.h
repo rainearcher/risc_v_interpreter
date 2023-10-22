@@ -22,11 +22,13 @@ private:
 
 private:
 	Instruction curInstruction;
+	InstructionReader reader;
 	bitset<8> *instructionMemory;
 	unsigned long PC; //pc 
 	RegisterFile regFile;
 	Controller controller;
 	ImmGen immGen;
+
 };
 
 

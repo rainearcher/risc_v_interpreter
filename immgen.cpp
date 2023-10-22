@@ -4,38 +4,18 @@
 
 void ImmGen::set_input(bitset<32> inp)
 {
-	Instruction instruction(inp);
-	if (instruction.opcode() == I_TYPE)
+	Instruction instr(inp);
+	InstructionReader reader;
+	if (reader.opcode(instr) == I_TYPE)
 	{
-		auto imm = instruction.i_type_imm();
-		if (!imm[11]) 
-			immediate = imm.to_ulong();
-		else
-		{
-			imm.flip();
-			immediate = -(imm.to_ulong() + 1);
-		}
+		immediate = reader.i_type_imm(instr);
 	}
-	else if (instruction.opcode() == S_TYPE)
+	else if (reader.opcode(instr) == S_TYPE)
 	{
-		auto imm = instruction.s_type_imm();
-		if (!imm[11])
-			immediate = imm.to_ulong();
-		else
-		{
-			imm.flip();
-			immediate = -(imm.to_ulong() + 1);
-		}
+		immediate = reader.s_type_imm(instr);
 	}
-	else if (instruction.opcode() == B_TYPE)
+	else if (reader.opcode(instr) == B_TYPE)
 	{
-		auto imm = instruction.b_type_imm();
-		if (!imm[12])
-			immediate = imm.to_ulong();
-		else
-		{
-			imm.flip();
-			immediate = -(imm.to_ulong() + 1);
-		}
+		immediate = reader.b_type_imm(instr);
 	}
 }

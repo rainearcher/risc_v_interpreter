@@ -32,10 +32,10 @@ void CPU::decode_current_instruction()
 {
 	//cout<<curr->instr<<endl;
 	fetch_current_instruction();
-	controller.set_opcode(curInstruction.opcode());
-	regFile.set_read_register_1(curInstruction.read_reg_1());
-	regFile.set_read_register_2(curInstruction.read_reg_2());
-	regFile.set_write_register(curInstruction.write_reg());
+	controller.set_opcode(reader.opcode(curInstruction));
+	regFile.set_read_register_1(reader.read_reg_1(curInstruction));
+	regFile.set_read_register_2(reader.read_reg_2(curInstruction));
+	regFile.set_write_register(reader.write_reg(curInstruction));
 
 	immGen.set_input(curInstruction.bits);
 
