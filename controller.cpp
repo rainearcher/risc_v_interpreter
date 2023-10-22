@@ -26,7 +26,7 @@ void Controller::set_opcode(bitset<7> code)
 		regWrite = true;
 		aluOp = bitset<2>("10");
 	}
-	else if (opcode == I_TYPE || opcode == JALR_TYPE)
+	else if (opcode == I_TYPE)
 	{
 		regWrite = true;
 		aluSrc = true;
@@ -48,6 +48,13 @@ void Controller::set_opcode(bitset<7> code)
 	}
 	else if (opcode == B_TYPE)
 	{
+		branch = true;
+		aluOp = bitset<2>("01");
+	}
+	else if (opcode == JALR_TYPE)
+	{
+		regWrite = true;
+		aluSrc = true;
 		branch = true;
 		aluOp = bitset<2>("01");
 	}
