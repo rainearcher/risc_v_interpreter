@@ -43,7 +43,8 @@ private:
 	ALU alu;
 
 	Mux aluSrcMux;
-	Mux pcJumpMux;
+	Mux pcBranchMux;
+	Mux pcBranchOrJumpMux;
 	Mux memOrAluMux;
 	Mux dataOrPcToRegMux;
 	Mux branchEqualOrLtMux;

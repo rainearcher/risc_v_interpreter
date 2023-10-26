@@ -8,6 +8,7 @@ class ImmGen {
 public:
 	void set_input(bitset<32> inp);
 	bitset<32> get_immediate();
+	int get_immediate_int();
 private:
 	bitset<32> immediate;
 	int immInt;
@@ -16,5 +17,10 @@ private:
 inline bitset<32> ImmGen::get_immediate()
 {
 	return immediate;
+}
+
+inline int ImmGen::get_immediate_int()
+{
+	return immInt;
 }
 #endif

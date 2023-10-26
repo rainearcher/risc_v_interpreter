@@ -9,6 +9,7 @@ public:
 	void set_opcode(bitset<7> opcode);
 
 	bool get_branch_flag();
+	bool get_jump_flag();
 	bool get_mem_read_flag();
 	bool get_mem_to_reg_flag();
 	bitset<2> get_alu_op();
@@ -20,6 +21,7 @@ private:
 private:
 	bitset<7> opcode;
 	bool branch;
+	bool jump;
 	bool memToReg;
 	bool memRead;
 	bool memWrite;
@@ -31,6 +33,11 @@ private:
 inline bool Controller::get_branch_flag()
 {
     return branch;
+}
+
+inline bool Controller::get_jump_flag()
+{
+    return jump;
 }
 
 inline bool Controller::get_mem_to_reg_flag()

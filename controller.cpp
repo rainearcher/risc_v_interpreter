@@ -10,10 +10,12 @@ void Controller::reset_flags()
 {
 	opcode = bitset<7>();
 	branch = false;
+	jump = false;
 	memRead = false;
 	memWrite = false;
 	regWrite = false;
 	aluSrc = false;
+	memToReg = false;
 	aluOp = bitset<2>();
 }
 
@@ -58,6 +60,7 @@ void Controller::set_opcode(bitset<7> code)
 		regWrite = true;
 		aluSrc = true;
 		branch = true;
-		aluOp = bitset<2>("01");
+		jump = true;
+		aluOp = bitset<2>("00");
 	}
 }

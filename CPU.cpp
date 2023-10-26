@@ -40,7 +40,7 @@ void CPU::decode_current_instruction()
 {
 	//cout<<curr->instr<<endl;
 	fetch_current_instruction();
-	
+
 	controller.set_opcode(reader.opcode(curInstruction));
 	regFile.set_read_register_1(reader.read_reg_1(curInstruction));
 	regFile.set_read_register_2(reader.read_reg_2(curInstruction));
@@ -60,9 +60,13 @@ void CPU::decode_current_instruction()
 	branchEqualOrLtMux.set_input_choice(curInstruction.bits[14]);
 	branchEqualOrLtMux.set_input_0(alu.get_zero_flag());
 	branchEqualOrLtMux.set_input_1(!alu.get_zero_flag() & alu.get_result()[31]);
-	pcJumpMux.set_input_choice(controller.get_branch_flag() & (branchEqualOrLtMux.get_output().to_ulong()));
-	pcJumpMux.set_input_0(PC + 4);
-	pcJumpMux.set_input_1(PC + static_cast<int>((immGen.get_immediate() << 1).to_ulong()));
+	pcBranchMux.set_input_choice(controller.get_branch_flag() & (branchEqualOrLtMux.get_output().to_ulong()));
+	pcBranchMux.set_input_0(PC + 4);
+	pcBranchMux.set_input_1(PC + immGen.get_immediate_int());
+	pcBranchOrJumpMux.set_input_choice(controller.get_jump_flag());
+	pcBranchOrJumpMux.set_input_0(pcBranchMux.get_output());
+	pcBranchOrJumpMux.set_input_1(alu.get_result());
+
 
 	dataMemory.set_mem_read(controller.get_mem_read_flag());
 	dataMemory.set_mem_write(controller.get_mem_write_flag());
@@ -76,7 +80,11 @@ void CPU::decode_current_instruction()
 	dataOrPcToRegMux.set_input_0(memOrAluMux.get_output());
 	dataOrPcToRegMux.set_input_1(PC + 4);
 	regFile.write_data(dataOrPcToRegMux.get_output());
-	PC = pcJumpMux.get_output().to_ulong();
+	PC = pcBranchOrJumpMux.get_output().to_ulong();
+
+	int reg1 = reader.read_reg_1(curInstruction).to_ulong();
+	int reg2 = reader.read_reg_2(curInstruction).to_ulong();
+	int writeReg = reader.write_reg(curInstruction).to_ulong();	
 }
 
 unsigned long CPU::readPC()

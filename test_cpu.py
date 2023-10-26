@@ -25,8 +25,8 @@ class TestCpu(unittest.TestCase):
     def test_r_type(self):
         self.template_test('r')
 
-    #def test_sw(self):
-    #    self.template_test('sw')
+    def test_sw(self):
+        self.template_test('sw')
         
-    #def test_all(self):
-    #    self.template_test('all')
+    def test_all(self):
+        self.template_test('all')
