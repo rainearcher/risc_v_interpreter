@@ -3,12 +3,12 @@ This is Project 1 for UCLA ECE M116C/CS M151B F23 quarter. The code implements t
 
 ADD, SUB, ADDI, XOR, AND, SRA, LW, SW, BLT, JALR
 
-# Compiling
+## Compiling
 ```
 g++ *cpp -o cpusim
 ```
 
-# Running the program
+## Running the program
 ```
 ./cpusim tests/<instruction-memory-file>
 ```
@@ -20,12 +20,12 @@ The program should output
 ```
 where a0,a1 are the standard return value registers.
 
-# Included files
+## Included files
 See tests/ directory for example input files.
 See assembly/ directory for assembly representation of the input files.
 See txt/ directory for annotated representations of the input files.
 
-# Testing
+## Testing
 ```
 python -m unittest
 ```
