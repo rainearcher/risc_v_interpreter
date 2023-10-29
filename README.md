@@ -10,9 +10,17 @@ g++ *cpp -o cpusim
 
 # Running the program
 ```
-./cpusim <instruction-memory-file>
+./cpusim tests/<instruction-memory-file>
 ```
 instruction-memory-file is a .txt file where each line is a single byte stored in little-endian format, represented as an unsigned decimal.
+
+The program should output 
+```
+(a0,a1)
+```
+where a0,a1 are the standard return value registers.
+
+# Included files
 See tests/ directory for example input files.
 See assembly/ directory for assembly representation of the input files.
 See txt/ directory for annotated representations of the input files.
